@@ -1,0 +1,52 @@
+openapi: 3.0.0
+
+info:
+  version: 0.0.1
+  title: Connections-posts
+  description: The posts service
+
+tags:
+  - name: Connections-posts
+
+paths:
+
+  /connections-posts/{username}:
+    get:
+      summary: Find all post
+      tags:
+        - Posts
+      description: Find posts
+      operationId: getConnectionsPost
+      parameters:
+        - in: path
+          name: username
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: ok
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PostSummary'
+
+components:
+  schemas:
+    PostSummary:
+      type: object
+      required:
+        - userName
+        - title
+        - date
+      properties:
+        userName:
+          type: string
+          format: uuid
+        title:
+          type: string
+        date:
+          type: string
+          format: date

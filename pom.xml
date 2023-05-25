@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>ru.kotepanov</groupId>
+    <artifactId>mini-twitter-connections-posts</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.7.11</version>
+        <relativePath/>
+    </parent>
+
+
+    <modules>
+        <module>mini-twitter-connections-posts-api</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <kotlin.version>1.7.22</kotlin.version>
+        <revision>2023.05.001-SNAPSHOT</revision>
+    </properties>
+
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <properties>
+                <db.url>jdbc:tc:postgresql:14:///postgres?TC_TMPFS=/testtmpfs:rw&amp;TC_INITSCRIPT=file:${basedir}/src/main/resources/init_mysql.sql</db.url>
+                <db.username>postgres</db.username>
+                <db.password>postgres</db.password>
+                <db.driver>org.testcontainers.jdbc.ContainerDatabaseDriver</db.driver>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>release</id>
+            <properties>
+                <db.url>jdbc:postgresql://192.168.0.110:5000/postgres</db.url>
+                <db.username>postgres</db.username>
+                <db.password>postgres</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://192.168.0.110:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://192.168.0.110:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+</project>
