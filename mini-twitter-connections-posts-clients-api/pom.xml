@@ -8,7 +8,7 @@
         <version>${revision}</version>
     </parent>
 
-    <artifactId>mini-twitter-connections-posts-api</artifactId>
+    <artifactId>mini-twitter-connections-posts-clients-api</artifactId>
     <packaging>jar</packaging>
     <version>${revision}</version>
 
@@ -108,11 +108,27 @@
                 <version>6.0.0</version>
                 <executions>
                     <execution>
+                        <id>generate-posts-api</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/connections-posts-api.yaml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/posts-api.yaml</inputSpec>
+                            <generateSupportingFiles>false</generateSupportingFiles>
+                            <generatorName>kotlin-spring</generatorName>
+                            <configOptions>
+                                <sourceFolder>src/main/kotlin</sourceFolder>
+                                <interfaceOnly>true</interfaceOnly>
+                            </configOptions>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-connection-api</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <inputSpec>${project.basedir}/src/main/resources/connection-api.yaml</inputSpec>
                             <generateSupportingFiles>false</generateSupportingFiles>
                             <generatorName>kotlin-spring</generatorName>
                             <configOptions>

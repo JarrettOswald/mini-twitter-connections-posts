@@ -20,6 +20,7 @@
 
     <modules>
         <module>mini-twitter-connections-posts-api</module>
+        <module>mini-twitter-connections-posts-clients-api</module>
     </modules>
 
     <properties>
