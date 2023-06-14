@@ -9,14 +9,14 @@ import java.util.*
 
 @Component
 class PostClient(
-    private val client: PostClientProperties
+    private val properties: PostClientProperties
 ) : PostsApi {
 
     private val restTemplate: RestTemplate = RestTemplate()
     override fun findPosts(userId: UUID?): ResponseEntity<List<Post>> {
         val requestEntity = HttpEntity.EMPTY
         return (restTemplate.exchange(
-            client.url,
+            "${properties.url}/posts",
             HttpMethod.GET,
             requestEntity,
             ResponseEntity::class.java
@@ -27,7 +27,11 @@ class PostClient(
         val headers = HttpHeaders()
         headers.contentType = MediaType.APPLICATION_JSON
         val requestEntity = HttpEntity(post, headers)
-        restTemplate.postForEntity(client.url, requestEntity, ResponseEntity::class.java)
+        restTemplate.postForEntity(
+            "${properties.url}/posts",
+            requestEntity,
+            ResponseEntity::class.java
+        )
         return ResponseEntity("Ok", HttpStatus.OK)
     }
 }
