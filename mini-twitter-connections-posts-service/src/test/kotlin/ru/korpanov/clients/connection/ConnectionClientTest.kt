@@ -67,7 +67,7 @@ class ConnectionClientTest {
         )
         connectionClient.updateConnectionByUserId(connection.uuid, updateConnection)
         connections = connectionClient.getConnections().body!!
-        val connectionNew = connections.filter { it.uuid == connection.uuid }.first()
+        val connectionNew = connections.first { it.uuid == connection.uuid }
         Assertions.assertNotEquals(connection, connectionNew)
     }
 }
