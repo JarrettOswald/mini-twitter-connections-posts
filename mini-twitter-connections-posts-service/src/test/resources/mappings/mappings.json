@@ -3,16 +3,6 @@
     {
       "request": {
         "method": "GET",
-        "url": "/sample/api"
-      },
-      "response": {
-        "status": 200,
-        "body": "{\"message\": \"Hello from WireMock\"}"
-      }
-    },
-    {
-      "request": {
-        "method": "GET",
         "url": "/connections"
       },
       "response": {
@@ -25,11 +15,41 @@
     },
     {
       "request": {
-        "url": "/two"
+        "method": "POST",
+        "urlPathPattern": "/connections"
       },
       "response": {
         "status": 200,
-        "body": "Body content"
+        "body": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/connections/.*/followe[rd]"
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n  {\n    \"uuid\": \"cab10b1a-dedb-11ed-b5ea-0242ac120002\",\n    \"follower\": \"7fb54d02-de1c-11ed-b5ea-0242ac120002\",\n    \"followed\": \"7fb55400-de1c-11ed-b5ea-0242ac120002\"\n  },\n  {\n    \"uuid\": \"d3236136-edc8-426f-bbe7-714c9f9683ff\",\n    \"follower\": \"efacfe3b-a966-415b-8650-e87cc702c8e2\",\n    \"followed\": \"3b4a260e-2e1c-4756-8f7a-a27a7921250b\"\n  },\n  {\n    \"uuid\": \"2b07ddcb-bc5b-45bc-95dd-df147edd891b\",\n    \"follower\": \"11ec2c9e-0da9-11ee-be56-0242ac120002\",\n    \"followed\": \"21ec2c9e-0da9-11ee-be56-0242ac120002\"\n  },\n  {\n    \"uuid\": \"5539a215-7578-4447-9117-da48865a1132\",\n    \"follower\": \"11ec2c9e-0da9-11ee-be56-0242ac120002\",\n    \"followed\": \"21ec2c9e-0da9-11ee-be56-0242ac120002\"\n  },\n  {\n    \"uuid\": \"70b50b5c-ce9a-4bd7-9b17-c18602a86878\",\n    \"follower\": \"4435e3f2-4730-4f3d-84d9-23cfc9bae4ab\",\n    \"followed\": \"152260a2-87fa-46e3-bf17-3a6b5215d639\"\n  },\n  {\n    \"uuid\": \"ccb8f71d-867d-4869-9f30-2dbbdb493671\",\n    \"follower\": \"b4a5984c-50a0-42a1-9c61-469551d7552a\",\n    \"followed\": \"23807408-e36f-4a27-bf84-827f0a282fa2\"\n  },\n  {\n    \"uuid\": \"cd64efe3-f80e-4094-bffd-5952f06b2f80\",\n    \"follower\": \"a39c1529-88df-4187-a096-27267997d9f2\",\n    \"followed\": \"4d150211-9f6f-424f-a09d-bfc6d911d951\"\n  },\n  {\n    \"uuid\": \"8e390a52-aa83-4d0f-82f9-b17970f982c0\",\n    \"follower\": \"c256fe5d-d422-4294-973f-15ad3b2bcaa8\",\n    \"followed\": \"aff06756-aa79-4be8-b6ea-e7f9ca21ac9f\"\n  },\n  {\n    \"uuid\": \"cab10b1a-dedb-11ed-b5ea-0242ac120005\",\n    \"follower\": \"280c7b02-82f6-497f-ab14-942c6359dce8\",\n    \"followed\": \"8018f542-f6c2-4c20-8bf0-f9eeb5142744\"\n  },\n  {\n    \"uuid\": \"cab10b1a-dedb-11ed-b5ea-0242ac120008\",\n    \"follower\": \"2d0aaf71-f46d-41cb-b53a-8c7a6ac3f9ad\",\n    \"followed\": \"7fb55d24-de1c-11ed-b5ea-0242ac120002\"\n  },\n  {\n    \"uuid\": \"78199e56-eed9-4699-902f-b9909a342dbf\",\n    \"follower\": \"2dd9253f-1bd0-4730-a3af-a385f1938003\",\n    \"followed\": \"ca56ba02-588a-4a33-8b77-4196e0d8c9d0\"\n  },\n  {\n    \"uuid\": \"cab10b1a-dedb-11ed-b5ea-0242ac120006\",\n    \"follower\": \"f52cb50d-e1d8-4b1f-90c9-8e90677c0204\",\n    \"followed\": \"7fb55bc6-de1c-11ed-b5ea-0242ac120002\"\n  },\n  {\n    \"uuid\": \"cab10b1a-dedb-11ed-b5ea-0242ac120003\",\n    \"follower\": \"6b47be9c-8733-4c9f-b0f5-635325256d54\",\n    \"followed\": \"7fb55608-de1c-11ed-b5ea-0242ac120002\"\n  },\n  {\n    \"uuid\": \"cab10b1a-dedb-11ed-b5ea-0242ac120004\",\n    \"follower\": \"de9fb3de-fe05-499f-98e8-dbe6bbaf1521\",\n    \"followed\": \"7fb5578e-de1c-11ed-b5ea-0242ac120002\"\n  },\n  {\n    \"uuid\": \"4331c586-da0a-4edc-b62d-600c29dc435f\",\n    \"follower\": \"ce61dd55-a9bb-45b9-a35f-443e296401db\",\n    \"followed\": \"da351058-e76f-4f4e-a55d-c563c8219406\"\n  },\n  {\n    \"uuid\": \"4c4c1711-e955-4ba5-824c-2dcf80c3481a\",\n    \"follower\": \"11ec2c9e-0da9-11ee-be56-0242ac120002\",\n    \"followed\": \"21ec2c9e-0da9-11ee-be56-0242ac120002\"\n  }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "PUT",
+        "urlPathPattern": "/connections/(.*)"
+      },
+      "response": {
+        "status": 200,
+        "body": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        }
       }
     }
   ]

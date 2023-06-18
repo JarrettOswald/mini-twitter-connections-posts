@@ -11,9 +11,6 @@ import org.openapitools.model.Connection
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.http.HttpEntity
-import org.springframework.http.HttpMethod
-import org.springframework.web.client.RestTemplate
 import java.util.*
 
 
@@ -25,18 +22,6 @@ class ConnectionClientTest {
     private lateinit var connectionClient: ConnectionClient
 
     private val logger = LoggerFactory.getLogger(ConnectionClientTest::class.java)
-
-    @Test
-    fun wireMock() {
-        val restTemplate = RestTemplate()
-        val r = restTemplate.exchange(
-            "http://localhost:8090/connections",
-            HttpMethod.GET,
-            HttpEntity.EMPTY,
-            String::class.java
-        )
-        logger.info(r.body)
-    }
 
     @Test
     fun getConnections() {
@@ -62,30 +47,24 @@ class ConnectionClientTest {
 
     @Test
     fun saveConnection() {
-        val connectionsSizeOld = connectionClient.getConnections().body!!.size
         val randomUUID = UUID.randomUUID()
         val newConnection = Connection(
             uuid = randomUUID, follower = UUID.randomUUID(), followed = UUID.randomUUID()
         )
-        connectionClient.saveConnection(newConnection)
-        val connectionsSizeNew = connectionClient.getConnections().body!!.size
-        Assertions.assertTrue(connectionsSizeOld < connectionsSizeNew)
-
-        //todo добавить очистку
+        val r = connectionClient.saveConnection(newConnection)
+        Assertions.assertTrue(r.statusCode.is2xxSuccessful)
     }
 
     @Test
     fun updateConnectionByUserId() {
-        var connections = connectionClient.getConnections().body
-        val connection = connections?.get(Random().nextInt(connections.size - 1))!!
+        val connections = connectionClient.getConnections().body!!
+        val connection = connections[Random().nextInt(connections.size - 1)]
         logger.info(connection.toString())
         val updateConnection = Connection(
             uuid = connection.uuid, follower = UUID.randomUUID(), followed = connection.followed
         )
-        connectionClient.updateConnectionByUserId(connection.uuid, updateConnection)
-        connections = connectionClient.getConnections().body!!
-        val connectionNew = connections.first { it.uuid == connection.uuid }
-        Assertions.assertNotEquals(connection, connectionNew)
+        val r = connectionClient.updateConnectionByUserId(connection.uuid, updateConnection)
+        Assertions.assertTrue(r.statusCode.is2xxSuccessful)
     }
 
 
@@ -94,7 +73,7 @@ class ConnectionClientTest {
 
         @JvmStatic
         @BeforeAll
-        internal fun beforeAll(): Unit {
+        internal fun beforeAll() {
             wireMockServer.start()
             configureFor("localhost", 8090)
         }
@@ -102,7 +81,7 @@ class ConnectionClientTest {
 
         @JvmStatic
         @AfterAll
-        internal fun afterAll(): Unit {
+        internal fun afterAll() {
             wireMockServer.stop()
         }
     }
