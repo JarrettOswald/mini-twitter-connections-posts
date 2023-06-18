@@ -30,7 +30,7 @@ class ConnectionClientTest {
     fun wireMock() {
         val restTemplate = RestTemplate()
         val r = restTemplate.exchange(
-            "http://localhost:8090/baeldung",
+            "http://localhost:8090/connections",
             HttpMethod.GET,
             HttpEntity.EMPTY,
             String::class.java
@@ -97,9 +97,6 @@ class ConnectionClientTest {
         internal fun beforeAll(): Unit {
             wireMockServer.start()
             configureFor("localhost", 8090)
-            stubFor(
-                get(urlEqualTo("/baeldung")).willReturn(aResponse().withBody("Welcome to Baeldung!"))
-            )
         }
 
 
