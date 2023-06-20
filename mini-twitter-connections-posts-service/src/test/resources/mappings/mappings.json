@@ -51,6 +51,32 @@
           "Content-Type": "application/json"
         }
       }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/posts"
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n    {\n        \"userId\": \"7fb54d02-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Evans the best\",\n        \"date\": \"2017-04-30\",\n        \"body\": \"my first post\"\n    },\n    {\n        \"userId\": \"7fb55400-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Manas the best\",\n        \"date\": \"2012-04-30\",\n        \"body\": \"my first post\"\n    },\n    {\n        \"userId\": \"7fb55608-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Sandhy the best\",\n        \"date\": \"2023-05-06\",\n        \"body\": \"my first post\"\n    },\n    {\n        \"userId\": \"7fb5578e-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Danijel the best\",\n        \"date\": \"2023-04-09\",\n        \"body\": \"my first post\"\n    },\n    {\n        \"userId\": \"7fb55900-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Tuva the best\",\n        \"date\": \"2023-03-06\",\n        \"body\": \"my first post\"\n    },\n    {\n        \"userId\": \"7fb55bc6-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Pitambara the best\",\n        \"date\": \"2019-04-06\",\n        \"body\": \"my first post\"\n    },\n    {\n        \"userId\": \"7fb55d24-de1c-11ed-b5ea-0242ac120002\",\n        \"title\": \"Nnenna the best\",\n        \"date\": \"2023-09-06\",\n        \"body\": \"my first post\"\n    }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPathPattern": "/posts"
+      },
+      "response": {
+        "status": 200,
+        "body": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
     }
   ]
 }

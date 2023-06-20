@@ -78,7 +78,6 @@ class ConnectionClientTest {
             configureFor("localhost", 8090)
         }
 
-
         @JvmStatic
         @AfterAll
         internal fun afterAll() {
