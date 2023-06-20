@@ -50,3 +50,5 @@ components:
         date:
           type: string
           format: date
+        body:
+          type: string
