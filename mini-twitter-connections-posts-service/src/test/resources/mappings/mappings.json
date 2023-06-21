@@ -77,6 +77,58 @@
           "Content-Type": "application/json"
         }
       }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/users"
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n    {\n        \"uuid\": \"7fb54d02-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Evans\",\n        \"surname\": \"Innocentius\"\n    },\n    {\n        \"uuid\": \"7fb55400-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Manas\",\n        \"surname\": \"Ruf\"\n    },\n    {\n        \"uuid\": \"7fb55608-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Sandhy\",\n        \"surname\": \"Bjorne\"\n    },\n    {\n        \"uuid\": \"7fb5578e-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Danijel\",\n        \"surname\": \"Madelynn\"\n    },\n    {\n        \"uuid\": \"7fb55900-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Tuva\",\n        \"surname\": \"Gruffudd\"\n    },\n    {\n        \"uuid\": \"7fb55bc6-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Pitambara\",\n        \"surname\": \"Themba\"\n    },\n    {\n        \"uuid\": \"7fb55d24-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Nnenna\",\n        \"surname\": \"Mirko\"\n    }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/users.*"
+      },
+      "response": {
+        "status": 200,
+        "body": "[\n    {\n        \"uuid\": \"7fb54d02-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Evans\",\n        \"surname\": \"Innocentius\"\n    },\n    {\n        \"uuid\": \"7fb55400-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Manas\",\n        \"surname\": \"Ruf\"\n    },\n    {\n        \"uuid\": \"7fb55608-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Sandhy\",\n        \"surname\": \"Bjorne\"\n    },\n    {\n        \"uuid\": \"7fb5578e-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Danijel\",\n        \"surname\": \"Madelynn\"\n    },\n    {\n        \"uuid\": \"7fb55900-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Tuva\",\n        \"surname\": \"Gruffudd\"\n    },\n    {\n        \"uuid\": \"7fb55bc6-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Pitambara\",\n        \"surname\": \"Themba\"\n    },\n    {\n        \"uuid\": \"7fb55d24-de1c-11ed-b5ea-0242ac120002\",\n        \"name\": \"Nnenna\",\n        \"surname\": \"Mirko\"\n    }\n]",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "PUT",
+        "urlPathPattern": "/users.*"
+      },
+      "response": {
+        "status": 200,
+        "body": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    {
+      "request": {
+        "method": "POST",
+        "urlPathPattern": "/users.*"
+      },
+      "response": {
+        "status": 200,
+        "body": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
     }
   ]
 }
