@@ -3,19 +3,19 @@ package ru.korpanov.clients.connection
 
 import com.github.tomakehurst.wiremock.WireMockServer
 import com.github.tomakehurst.wiremock.client.WireMock.*
-import org.junit.jupiter.api.AfterAll
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeAll
-import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.*
+import org.junit.jupiter.api.extension.ExtendWith
 import org.openapitools.model.Connection
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import ru.korpanov.extensions.MyExtension
+import ru.korpanov.extensions.annotation.CallThePolice
 import java.util.*
 
 
 @SpringBootTest
-
+@ExtendWith(MyExtension::class)
 class ConnectionClientTest {
 
     @Autowired
@@ -24,12 +24,14 @@ class ConnectionClientTest {
     private val logger = LoggerFactory.getLogger(ConnectionClientTest::class.java)
 
     @Test
+    @CallThePolice
     fun getConnections() {
         val resp = connectionClient.getConnections()
         Assertions.assertTrue(resp.body!!.isNotEmpty())
     }
 
     @Test
+    @CallThePolice
     fun getFollowedConnectionByUserName() {
         val connections = connectionClient.getConnections().body
         val connection = connections?.get(Random().nextInt(connections.size - 1))
