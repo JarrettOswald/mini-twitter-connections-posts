@@ -3,6 +3,7 @@ package ru.korpanov.controllers
 import org.openapitools.api.ConnectionsPostsApi
 import org.openapitools.model.Post
 import org.openapitools.model.PostSummary
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Controller
 import ru.korpanov.clients.connection.ConnectionClient
@@ -23,6 +24,7 @@ class ConnectionsPostsController(
             .map { postClient.findPosts(it.followed).body!! }
             .forEach { posts.addAll(it) }
 
-        return super.getConnectionsPost(username)
+        val out = posts.map { PostSummary(it.userId, it.title, it.date, it.body) }
+        return ResponseEntity(out, HttpStatus.OK)
     }
 }

@@ -41,6 +41,7 @@ components:
         - userName
         - title
         - date
+        - body
       properties:
         userName:
           type: string
