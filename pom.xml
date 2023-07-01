@@ -76,12 +76,24 @@
     <profiles>
         <profile>
             <id>develop</id>
+            <properties>
+                <db.url>jdbc:tc:postgresql:14:///postgres?TC_TMPFS=/testtmpfs:rw&amp;TC_INITSCRIPT=file:${basedir}/src/main/resources/init_mysql.sql</db.url>
+                <db.username>postgres</db.username>
+                <db.password>postgres</db.password>
+                <db.driver>org.testcontainers.jdbc.ContainerDatabaseDriver</db.driver>
+            </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
             <id>release</id>
+            <properties>
+                <db.url>jdbc:postgresql://192.168.0.110:5000/postgres</db.url>
+                <db.username>postgres</db.username>
+                <db.password>postgres</db.password>
+                <db.driver>org.postgresql.Driver</db.driver>
+            </properties>
         </profile>
     </profiles>
 
