@@ -14,7 +14,7 @@ paths:
     get:
       summary: Find all post
       tags:
-        - Posts
+        - Connections-posts
       description: Find posts
       operationId: getConnectionsPost
       parameters:
@@ -33,6 +33,67 @@ paths:
                 items:
                   $ref: '#/components/schemas/PostSummary'
 
+  /posts:
+    post:
+      tags:
+        - Connections-posts
+      operationId: savePost
+      requestBody:
+        required: true
+        description: Post obj
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Post'
+      responses:
+        "200":
+          description: This means is ok
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /users:
+    post:
+      summary: Add new user
+      tags:
+        - Connections-posts
+      operationId: saveUser
+      requestBody:
+        required: true
+        description: User obj
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        "200":
+          description: It's ok
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /connections:
+    post:
+      summary: Add new connection
+      operationId: saveConnection
+      tags:
+        - Connections-posts
+      requestBody:
+        required: true
+        description: Connections obj
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Connection'
+      responses:
+        "200":
+          description: It's ok
+          content:
+            text/plain:
+              schema:
+                type: string
 components:
   schemas:
     PostSummary:
@@ -53,3 +114,55 @@ components:
           format: date
         body:
           type: string
+
+    Connection:
+      type: object
+      required:
+        - uuid
+        - follower
+        - followed
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        follower:
+          type: string
+          format: uuid
+        followed:
+          type: string
+          format: uuid
+    Post:
+      type: object
+      required:
+        - userId
+        - title
+        - date
+        - body
+      properties:
+        userId:
+          type: string
+          format: uuid
+        title:
+          type: string
+        date:
+          type: string
+          format: date
+        body:
+          type: string
+          example: 'text about life'
+    User:
+      type: object
+      required:
+        - uuid
+        - name
+        - surname
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+          example: Ivan
+        surname:
+          type: string
+          example: Drago
