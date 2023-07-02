@@ -1,6 +1,14 @@
 spring:
   main:
     banner-mode: "off"
+  datasource:
+    url: '@db.url@'
+    username: '@db.username@'
+    password: '@db.password@'
+    driver-class-name: '@db.driver@'
+  jpa:
+    hibernate:
+      ddl-auto: none
 
 management:
   endpoints:
@@ -16,11 +24,3 @@ management:
 info:
   app:
     version: '@revision@'
-
-endpoint:
-  post:
-    url: "http://localhost:8090"
-  connection:
-    url: "http://localhost:8090"
-  user:
-    url: "http://localhost:8090"
