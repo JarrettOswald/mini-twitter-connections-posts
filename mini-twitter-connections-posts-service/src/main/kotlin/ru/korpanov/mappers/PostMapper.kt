@@ -4,19 +4,21 @@ import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 import org.mapstruct.Mappings
 import org.mapstruct.ReportingPolicy
+import org.openapitools.model.Post
 import org.openapitools.model.User
+import ru.korepanov.minitwitterservice.tables.pojos.Posts
 import ru.korepanov.minitwitterservice.tables.pojos.Users
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
-interface UserMapper {
+interface PostMapper {
     @Mappings(
-        Mapping(source = "uuid", target = "id")
+        Mapping(source = "date", target = "postCreate")
     )
-    fun toJooqUser (user: User): Users
+    fun toJooqPost(post: Post): Posts
 
     @Mappings(
-        Mapping(source = "id", target = "uuid")
+        Mapping(source = "postCreate", target = "date")
     )
-    fun toOpenapiUser(user: Users): User
+    fun toOpenapiPost(post: Posts): Post
 }
